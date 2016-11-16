@@ -29,6 +29,7 @@ colorscheme desert
 " vimdiff
 """"""""""""""""""""""""""""""""""""""""""""""""
 " vimdiffの色設定
+" 参考 : http://qiita.com/takaakikasai/items/b46a0b8c94e476e57e31
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
