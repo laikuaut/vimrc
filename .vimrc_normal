@@ -72,7 +72,7 @@ set laststatus=2
 " 行を折り返す
 set wrap
 " 強調表示する列を設定する
-set colorcolumn=80
+"set colorcolumn=80
 " 編集中のファイル名を表示しない
 set notitle
 " 括弧の対応をハイライト
@@ -184,8 +184,8 @@ set showtabline=2
 function! g:auto_vimrc_auto_cursorline()
     augroup vimrc-auto-cursorline
         autocmd!
-        autocmd InsertEnter,CursorMoved * call s:auto_cursorline('off')
-        autocmd InsertLeave,VimEnter,CursorHold * call s:auto_cursorline('on')
+        autocmd InsertLeave,CursorMovedI * call s:auto_cursorline('off')
+        autocmd InsertEnter,VimEnter,CursorHold,CursorHoldI * call s:auto_cursorline('on')
     augroup END
 endfunction
 " カーソルラインのグループをOFFにする
@@ -200,10 +200,12 @@ function! s:auto_cursorline(event)
     if a:event ==# 'off'
         hi clear CursorLine
         setlocal nocursorcolumn
+        setlocal colorcolumn=0
     elseif a:event ==# 'on'
         setlocal cursorcolumn
         setlocal cursorline
         hi CursorLine term=underline cterm=underline guibg=Grey90
+        setlocal colorcolumn=80
     endif
 endfunction
 " 呼び出し
@@ -217,8 +219,8 @@ call g:auto_vimrc_auto_cursorline()
 function! g:auto_vimrc_auto_relativenumber()
     augroup vimrc-auto-relativenumber
         autocmd!
-        autocmd InsertEnter,CursorHold * call s:toggleNumberOption('on')
-        autocmd InsertLeave,CursorMoved,VimEnter * call s:toggleNumberOption('off')
+        autocmd InsertEnter,CursorHold,CursorHoldI * call s:toggleNumberOption('on')
+        autocmd InsertLeave,CursorMovedI,VimEnter * call s:toggleNumberOption('off')
     augroup END
 endfunction
 " 相対行番号のグループをOFFにする
@@ -246,4 +248,3 @@ function! s:toggleNumberOption(event)
 endfunction
 " 呼び出し
 call g:auto_vimrc_auto_relativenumber()
-
