@@ -50,7 +50,7 @@ set shiftwidth=4
 " コンテキストに応じたタブの処理を行なう
 set smarttab
 " 改行時に前の行の行末を見て自動でインデント
-set smartindent
+"set smartindent
 " インデント自動的
 set autoindent
 
