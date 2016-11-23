@@ -1,22 +1,27 @@
 """""""""""""""""""""""""""""""""""""""""""""""""
 " 基本設定
 """""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
 " 文字コード
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
 endif
 " vim のデフォルト設定にする
 set nocompatible
+""" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " viminfo
 """""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
 set viminfo='20,\"50 " read/write a .viminfo file, don't store more
 set history=50 " keep 50 lines of command line history
+""" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " カラースキーマを設定
 """""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
 syntax on
 "colorscheme delek
 "colorscheme koehler
@@ -35,20 +40,24 @@ colorscheme desert
 "colorscheme evening
 "colorscheme pablo
 "colorscheme slate
+""" }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " vimdiff
 """"""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
 " vimdiffの色設定
 " 参考 : http://qiita.com/takaakikasai/items/b46a0b8c94e476e57e31
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+""" }}}
 
 """""""""""""""""""""""""""""
 " インデント設定
 """""""""""""""""""""""""""""
+""" {{{
 " ＜TAB>入力時、空白を挿入にする
 set expandtab
 " タブ表示幅を設定
@@ -63,10 +72,12 @@ set smarttab
 "set smartindent
 " インデント自動的
 set autoindent
+""" }}}
 
 """""""""""""""""""""""""""""
 " 画面表示
 """""""""""""""""""""""""""""
+""" {{{
 " 行番号を表示
 set number
 " 相対行番号で表示
@@ -99,21 +110,24 @@ set showcmd
 "autocmd ColorScheme * highlight clear CursorLine
 " ルーラー表示
 "set ruler
+""" }}}
 
 """""""""""""""""""""""""""""
 " 検索設定
 """""""""""""""""""""""""""""
+""" {{{
 " 検索結果をハイライト表示する
 set hlsearch
 " インクリメンタルサーチを有効にする
 set incsearch
 " 検索時に最後まで移動したら最初に戻る
 set wrapscan
-
+""" }}}
 
 """""""""""""""""""""""""""""
 " 移動設定
 """""""""""""""""""""""""""""
+""" {{{
 " 行頭・行末の左右移動で行を移動する
 set whichwrap=b,s,h,l,<,>,[,]
 " BSで削除できるものを指定する
@@ -121,57 +135,79 @@ set whichwrap=b,s,h,l,<,>,[,]
 " eol     : 改行
 " start   : 挿入モード開始位置より手前の文字
 set bs=indent,eol,start
+""" }}}
 
 """""""""""""""""""""""""""""
 " コマンドモード
 """""""""""""""""""""""""""""
+""" {{{
 " コマンド補完を強化
 set wildmenu
 " リスト表示，最長マッチ
 set wildmode=list:full
+""" }}}
 
 """""""""""""""""""""""""""""
 " その他
 """""""""""""""""""""""""""""
+""" {{{
 " 8進数を無効にする。<C-a>,<C-x>に影響する
 set nrformats-=octal
 " 日本語の行の連結時には空白を入力しない
 set formatoptions+=Mm
+" 折り畳みを設定「{{{ }}}で囲う」
+" za 部分開閉
+" zr 全開き
+" zm 全閉じ
+set foldmethod=marker
+""" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " キーマップを設定
 """""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
 "nmap h <Insert>
 "nmap i <Up>
 "nmap j <Left>
 "nmap k <Down>
 "nmap l <Right>
+""" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " インデントOFF
 """""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
 function! g:noIndent()
+    setlocal shiftwidth=0
+    setlocal softtabstop=0
     setlocal nosmarttab
     setlocal noautoindent
     setlocal nosmartindent
     setlocal formatoptions-=r
-    set shiftwidth=0
+    setlocal paste
 endfunction
+""" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " インデントON
 """""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
 function! g:indent()
     setlocal smarttab
     setlocal autoindent
 "    setlocal smartindent
     setlocal formatoptions+=r
+    setlocal shiftwidth=4
+    setlocal softtabstop=4
+    setlocal nopaste
 endfunction
+""" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " タブラインを設定
 " 参考: http://qiita.com/wadako111/items/755e753677dd72d8036d
 """""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
 " Anywhere SID.
 function! s:SID_PREFIX()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
@@ -199,12 +235,14 @@ endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 " 常にタブラインを表示
 set showtabline=2
+""" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " カーソルラインとカラムのハイライト設定
 " 参考: http://thinca.hatenablog.com/entry/20090530/1243615055
 "       http://qiita.com/koara-local/items/57b5f2847b3506a6485b
 """""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
 " カーソルラインのグループをONにする
 function! g:auto_vimrc_auto_cursorline()
     augroup vimrc-auto-cursorline
@@ -235,11 +273,13 @@ function! s:auto_cursorline(event)
 endfunction
 " 呼び出し
 call g:auto_vimrc_auto_cursorline()
+""" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " コマンドコード：相対的な番号と絶対的な行番号をトグル
 " 挿入モード：絶対的な番号
 """""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
 " 相対行番号のグループをONにする
 function! g:auto_vimrc_auto_relativenumber()
     augroup vimrc-auto-relativenumber
@@ -273,4 +313,27 @@ function! s:toggleNumberOption(event)
 endfunction
 " 呼び出し
 call g:auto_vimrc_auto_relativenumber()
+""" }}}
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" 貼り付け時、自動でインデント無効化(pasteモード)
+" 参考 : http://qiita.com/ryoff/items/ad34584e41425362453e
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
+if &term =~ "xterm"
+    let &t_ti .= "\e[?2004h"
+    let &t_te .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+
+    noremap <special> <expr> <Esc>[200~ XTermPasteBegin("0i")
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+    cnoremap <special> <Esc>[200~ <nop>
+    cnoremap <special> <Esc>[201~ <nop>
+endif
+""" }}}
 
