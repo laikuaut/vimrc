@@ -65,3 +65,11 @@ filetype plugin indent on
 NeoBundleCheck
 "End NeoBundle Scripts-------------------------
 ```
+
+### プラグイン一覧
+
+* [Neosnippet](https://github.com/Shougo/neosnippet.vim)
+
+#### Neosnippet
+
+

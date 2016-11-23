@@ -35,6 +35,7 @@ highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
+
 """""""""""""""""""""""""""""
 " インデント設定
 """""""""""""""""""""""""""""
@@ -128,21 +129,18 @@ set formatoptions+=Mm
 " インデントOFF
 """""""""""""""""""""""""""""""""""""""""""""""""
 function! g:noIndent()
-    setlocal nosmarttab
-    setlocal noautoindent
-    setlocal nosmartindent
-    setlocal formatoptions-=r
-    set shiftwidth=0
+  setlocal noautoindent
+  setlocal nosmartindent
+  setlocal formatoptions-=r
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " インデントON
 """""""""""""""""""""""""""""""""""""""""""""""""
 function! g:indent()
-    setlocal smarttab
-    setlocal autoindent
-"    setlocal smartindent
-    setlocal formatoptions+=r
+  setlocal autoindent
+  setlocal smartindent
+  setlocal formatoptions+=r
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -252,9 +250,9 @@ endfunction
 call g:auto_vimrc_auto_relativenumber()
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" NeoBundle開始
+" NeoBundle設定
 """""""""""""""""""""""""""""""""""""""""""""""""
-""" {{{
+
 "NeoBundle Scripts-----------------------------
 if &compatible
       set nocompatible               " Be iMproved
@@ -271,16 +269,11 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
-if has('lua') && (( v:version == 703 && has('patch885')) || (v:version >= 704))
-    NeoBundle 'Shougo/neocomplete'
-else
-    NeoBundle 'Shougo/neocomplcache'
-endif
-NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
-"NeoBundle 'tpope/vim-fugitive'
-"NeoBundle 'ctrlpvim/ctrlp.vim'
-"NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'flazz/vim-colorschemes'
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
@@ -295,29 +288,4 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 "End NeoBundle Scripts-------------------------
-""" }}}
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" neosnippte設定
-"""""""""""""""""""""""""""""""""""""""""""""""""
-""" {{{
-" Plugin key-mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-""" }}}
 
