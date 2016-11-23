@@ -69,7 +69,16 @@ NeoBundleCheck
 ### luaを有効化
 
 ```Bash
+# lua-develインストール
 yum install -y lua-devel perl-ExtUtils-Embed
+# luajitインストール
+wget http://luajit.org/download/LuaJIT-2.0.3.tar.gz
+tar zxvf LuaJIT-2.0.3.tar.gz
+cd LuaJIT-2.0.3/
+make
+sudo make install
+echo 'export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"' >> ~/.bash_profile
+# vim7.4インストール
 wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
 tar xvf vim-7.4.tar.bz2
 cd vim74/
@@ -78,17 +87,16 @@ cd vim74/
  --enable-multibyte \
  --enable-xim \
  --enable-fontset \
- --enable-rubyinterp \
  --enable-perlinterp \
- --enable-pythoninterp \
- --enable-python3interp \
  --with-features=huge \
  --disable-selinux \
  --enable-luainterp=yes \
- --with-ruby-command=/usr/bin/ruby \
+ --enable-rubyinterp \
+ --enable-python3interp \
+ --with-python3-config-dir=~/.pyenv/versions/3.5.2/lib/python3.5/config-3.5m/ \
  --with-luajit \
- --with-python-config-dir=/usr/lib64/python2.7/config \
- --with-python3-config-dir=~/.pyenv/shims/python3.5-config
+ --with-ruby-command=~/.rbenv/shims/ruby \
+ --enable-fail-if-missing
 make
 make install
 ```

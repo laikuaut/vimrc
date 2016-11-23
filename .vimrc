@@ -1,12 +1,23 @@
 """""""""""""""""""""""""""""""""""""""""""""""""
 " 基本設定
 """""""""""""""""""""""""""""""""""""""""""""""""
+" 文字コード
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+   set fileencodings=ucs-bom,utf-8,latin1
+endif
 " vim のデフォルト設定にする
 set nocompatible
 
 """""""""""""""""""""""""""""""""""""""""""""""""
+" viminfo
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set viminfo='20,\"50 " read/write a .viminfo file, don't store more
+set history=50 " keep 50 lines of command line history
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
 " カラースキーマを設定
 """""""""""""""""""""""""""""""""""""""""""""""""
+syntax on
 "colorscheme delek
 "colorscheme koehler
 "colorscheme peachpuff
@@ -86,6 +97,8 @@ set showcmd
 "set cursorcolumn
 " カーソルラインを色なしに設定(行番号のみをハイライト)
 "autocmd ColorScheme * highlight clear CursorLine
+" ルーラー表示
+"set ruler
 
 """""""""""""""""""""""""""""
 " 検索設定
@@ -96,8 +109,18 @@ set hlsearch
 set incsearch
 " 検索時に最後まで移動したら最初に戻る
 set wrapscan
+
+
+"""""""""""""""""""""""""""""
+" 移動設定
+"""""""""""""""""""""""""""""
 " 行頭・行末の左右移動で行を移動する
-"set whichwrap=b,s,h,l,<,>,[,]
+set whichwrap=b,s,h,l,<,>,[,]
+" BSで削除できるものを指定する
+" indent  : 行頭の空白
+" eol     : 改行
+" start   : 挿入モード開始位置より手前の文字
+set bs=indent,eol,start
 
 """""""""""""""""""""""""""""
 " コマンドモード
