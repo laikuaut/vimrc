@@ -69,8 +69,8 @@ NeoBundleCheck
 ### プラグイン一覧
 
 * [Shougo/neocomplcache.vim](https://github.com/Shougo/neocomplcache.vim)
-* [Shougo/Neosnippet](https://github.com/Shougo/neosnippet.vim)
 * [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim)
+* [Shougo/neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
 * [Shougo/neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
 
 #### Neosnippet
