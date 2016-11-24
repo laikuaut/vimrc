@@ -107,7 +107,35 @@ make install
 * [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim)
 * [Shougo/neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
 * [Shougo/neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
+* [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
 
-#### Neosnippet
+#### Shougo/neocomplcache.vim
+
+#### Shougo/neocomplete.vim
+
+#### Shougo/neosnippet.vim
+
+#### Shougo/neosnippet-snippets
+
+#### tpope/vim-fugitive
+
+これらのコマンドは全てgitリポジトリ内でのみ操作可能だ。
+
+* Gstatus
+    + 新しい窓を作ってgit statusを表示
+* Gwrite
+    + 現在開いているソースをgit add
+* Gread
+    + 現在開いているソースの直前のコミット時のソースを表示
+* Gmove destination/path
+    + 現在開いているソースをgit mvする
+* Gremove
+    + 現在開いているソースをgit rmする
+* Gcommit
+    + git commit
+* Gblame
+    + 現在のソースをgit blame。vimが色づけしてくれる
+* Gdiff
+    + 現在のソースの変更点をvimdiffで表示 
 
 
