@@ -108,6 +108,9 @@ make install
 * [Shougo/neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
 * [Shougo/neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
 * [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
+* [ctrlpvim/ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
+* [Shougo/unite.vim](https://github.com/Shougo/unite.vim)
+* [Shougo/neomru.vim](https://github.com/Shougo/neomru.vim)
 
 #### Shougo/neocomplcache.vim
 
