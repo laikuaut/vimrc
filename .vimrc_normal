@@ -282,8 +282,8 @@ call g:auto_vimrc_auto_cursorline()
 function! g:auto_vimrc_auto_relativenumber() " {{{
     augroup vimrc-auto-relativenumber
         autocmd!
-        autocmd InsertEnter,CursorHold,CursorHoldI * call s:toggleNumberOption('on')
-        autocmd InsertLeave,CursorMovedI,VimEnter * call s:toggleNumberOption('off')
+        autocmd InsertEnter,CursorHold,CursorHoldI,VimEnter * call s:toggleNumberOption('on')
+        autocmd InsertLeave,CursorMovedI * call s:toggleNumberOption('off')
     augroup END
 endfunction "}}}
 " 相対行番号のグループをOFFにする
@@ -297,15 +297,15 @@ endfunction " }}}
 function! s:toggleNumberOption(event) "{{{
     if a:event ==# 'on'
         if&number
-            set relativenumber
+            setlocal relativenumber
         else
-            set number
+            setlocal number
         endif
     elseif a:event ==# 'off'
         if&number
-            set norelativenumber
+            setlocal norelativenumber
         else
-            set number
+            setlocal number
         endif
     endif
 endfunction "}}}

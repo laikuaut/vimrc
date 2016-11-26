@@ -282,8 +282,8 @@ call g:auto_vimrc_auto_cursorline()
 function! g:auto_vimrc_auto_relativenumber() " {{{
     augroup vimrc-auto-relativenumber
         autocmd!
-        autocmd InsertEnter,CursorHold,CursorHoldI * call s:toggleNumberOption('on')
-        autocmd InsertLeave,CursorMovedI,VimEnter * call s:toggleNumberOption('off')
+        autocmd InsertEnter,CursorHold,CursorHoldI,VimEnter * call s:toggleNumberOption('on')
+        autocmd InsertLeave,CursorMovedI * call s:toggleNumberOption('off')
     augroup END
 endfunction "}}}
 " 相対行番号のグループをOFFにする
@@ -297,15 +297,15 @@ endfunction " }}}
 function! s:toggleNumberOption(event) "{{{
     if a:event ==# 'on'
         if&number
-            set relativenumber
+            setlocal relativenumber
         else
-            set number
+            setlocal number
         endif
     elseif a:event ==# 'off'
         if&number
-            set norelativenumber
+            setlocal norelativenumber
         else
-            set number
+            setlocal number
         endif
     endif
 endfunction "}}}
@@ -379,6 +379,7 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundleLazy 'vim-scripts/python_fold' , {
 \    "autoload" : {"filetypes" : ["python"]}
 \}
+""" }}}
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
@@ -496,3 +497,37 @@ endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 """ }}}
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-scripts/python_fold設定
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
+" 相対行番号のグループをONにする
+function! g:vimrc_python_fold() " {{{
+    augroup vimrc-python-fold
+        autocmd!
+        autocmd FileType python call s:python_fold('on')
+    augroup END
+endfunction "}}}
+" 相対行番号のグループをOFFにする
+function! g:novimrc_python_fold() " {{{
+    augroup vimrc-python-fold
+        autocmd!
+        call s:python_fold('off')
+    augroup END
+endfunction " }}}
+" 行番号グループ用関数定義
+function! s:python_fold(event) "{{{
+    if a:event ==# 'on'
+        setlocal foldmethod=expr
+        setlocal foldexpr=GetPythonFold(v:lnum)
+        setlocal foldtext=PythonFoldText()
+    elseif a:event ==# 'off'
+        setlocal foldmethod=marker
+        setlocal foldexpr
+        setlocal foldtext
+    endif
+endfunction "}}}
+" 呼び出し
+call g:vimrc_python_fold()
+""" }}}
