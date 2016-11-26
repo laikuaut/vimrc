@@ -112,6 +112,7 @@ make install
 * [ctrlpvim/ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
 * [Shougo/unite.vim](https://github.com/Shougo/unite.vim)
 * [Shougo/neomru.vim](https://github.com/Shougo/neomru.vim)
+* [vim-scripts/python_fold](https://github.com/vim-scripts/python_fold)
 
 #### Shougo/neocomplcache.vim
 
@@ -147,6 +148,8 @@ make install
 #### Shougo/unite.vim
 
 #### Shougo/neomru.vim
+
+#### vim-scripts/python_fold
 
 
 

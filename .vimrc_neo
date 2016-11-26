@@ -36,6 +36,7 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundleLazy 'vim-scripts/python_fold' , {
 \    "autoload" : {"filetypes" : ["python"]}
 \}
+""" }}}
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
