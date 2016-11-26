@@ -8,7 +8,9 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
 " Required:
 call neobundle#begin(expand('~/.vim/bundle'))
@@ -17,6 +19,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" プラグイン {{{
 " Add or remove your Bundles here:
 if has('lua') && (( v:version == 703 && has('patch885')) || (v:version >= 704))
     NeoBundle 'Shougo/neocomplete'
@@ -29,7 +32,10 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-"NeoBundle 'flazz/vim-colorschemes'
+
+NeoBundleLazy 'vim-scripts/python_fold' , {
+\    "autoload" : {"filetypes" : ["python"]}
+\}
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }

@@ -103,6 +103,7 @@ make install
 
 ### プラグイン一覧
 
+* [Shougo/neobundle.vim](https://github.com/Shougo/neobundle.vim)
 * [Shougo/neocomplcache.vim](https://github.com/Shougo/neocomplcache.vim)
 * [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim)
 * [Shougo/neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
@@ -140,5 +141,12 @@ make install
     + 現在のソースをgit blame。vimが色づけしてくれる
 * Gdiff
     + 現在のソースの変更点をvimdiffで表示 
+
+#### ctrlpvim/ctrlp.vim
+
+#### Shougo/unite.vim
+
+#### Shougo/neomru.vim
+
 
 

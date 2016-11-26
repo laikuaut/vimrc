@@ -174,10 +174,11 @@ set foldmethod=marker
 """ }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" インデントOFF
+" インデント用関数
 """""""""""""""""""""""""""""""""""""""""""""""""
 """ {{{
-function! g:noIndent()
+" インデントOFF
+function! g:noIndent() " {{{
     setlocal shiftwidth=0
     setlocal softtabstop=0
     setlocal nosmarttab
@@ -185,14 +186,10 @@ function! g:noIndent()
     setlocal nosmartindent
     setlocal formatoptions-=r
     setlocal paste
-endfunction
-""" }}}
+endfunction " }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
 " インデントON
-"""""""""""""""""""""""""""""""""""""""""""""""""
-""" {{{
-function! g:indent()
+function! g:indent() " {{{
     setlocal smarttab
     setlocal autoindent
 "    setlocal smartindent
@@ -200,7 +197,7 @@ function! g:indent()
     setlocal shiftwidth=4
     setlocal softtabstop=4
     setlocal nopaste
-endfunction
+endfunction " }}}
 """ }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -209,9 +206,9 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""
 """ {{{
 " Anywhere SID.
-function! s:SID_PREFIX()
+function! s:SID_PREFIX() " {{{
   return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
-endfunction
+endfunction " }}}
 
 " Set tabline.
 function! s:my_tabline()  "{{{
@@ -232,6 +229,7 @@ function! s:my_tabline()  "{{{
   let s .= '%#TabLineFill#%T%=%#TabLine#'
   return s
 endfunction "}}}
+" タブラインの表示設定
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 " 常にタブラインを表示
 set showtabline=2
@@ -244,22 +242,22 @@ set showtabline=2
 """""""""""""""""""""""""""""""""""""""""""""""""
 """ {{{
 " カーソルラインのグループをONにする
-function! g:auto_vimrc_auto_cursorline()
+function! g:auto_vimrc_auto_cursorline() " {{{
     augroup vimrc-auto-cursorline
         autocmd!
         autocmd InsertLeave,CursorMovedI * call s:auto_cursorline('off')
         autocmd InsertEnter,VimEnter,CursorHold,CursorHoldI * call s:auto_cursorline('on')
     augroup END
-endfunction
+endfunction " }}}
 " カーソルラインのグループをOFFにする
-function! g:noauto_vimrc_auto_cursorline()
+function! g:noauto_vimrc_auto_cursorline() " {{{
     augroup vimrc-auto-cursorline
         autocmd!
         call s:auto_cursorline('off')
     augroup END
-endfunction
+endfunction " }}}
 " カーソルライングループ用関数定義
-function! s:auto_cursorline(event)
+function! s:auto_cursorline(event) " {{{
     if a:event ==# 'off'
         hi clear CursorLine
         setlocal nocursorcolumn
@@ -270,7 +268,7 @@ function! s:auto_cursorline(event)
         hi CursorLine term=underline cterm=underline guibg=Grey90
         setlocal colorcolumn=80
     endif
-endfunction
+endfunction " }}}
 " 呼び出し
 call g:auto_vimrc_auto_cursorline()
 """ }}}
@@ -281,22 +279,22 @@ call g:auto_vimrc_auto_cursorline()
 """""""""""""""""""""""""""""""""""""""""""""""""
 """ {{{
 " 相対行番号のグループをONにする
-function! g:auto_vimrc_auto_relativenumber()
+function! g:auto_vimrc_auto_relativenumber() " {{{
     augroup vimrc-auto-relativenumber
         autocmd!
         autocmd InsertEnter,CursorHold,CursorHoldI * call s:toggleNumberOption('on')
         autocmd InsertLeave,CursorMovedI,VimEnter * call s:toggleNumberOption('off')
     augroup END
-endfunction
+endfunction "}}}
 " 相対行番号のグループをOFFにする
-function! g:noauto_vimrc_auto_relativenumber()
+function! g:noauto_vimrc_auto_relativenumber() " {{{
     augroup vimrc-auto-relativenumber
         autocmd!
         call s:toggleNumberOption('off')
     augroup END
-endfunction
+endfunction " }}}
 " 行番号グループ用関数定義
-function! s:toggleNumberOption(event)
+function! s:toggleNumberOption(event) "{{{
     if a:event ==# 'on'
         if&number
             set relativenumber
@@ -310,7 +308,7 @@ function! s:toggleNumberOption(event)
             set number
         endif
     endif
-endfunction
+endfunction "}}}
 " 呼び出し
 call g:auto_vimrc_auto_relativenumber()
 """ }}}
@@ -325,18 +323,24 @@ if &term =~ "xterm"
     let &t_te .= "\e[?2004l"
     let &pastetoggle = "\e[201~"
 
-    function XTermPasteBegin(ret)
+    function! s:XTermPasteBegin(ret)
         set paste
         return a:ret
     endfunction
 
-    noremap <special> <expr> <Esc>[200~ XTermPasteBegin("0i")
-    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+    noremap <special> <expr> <Esc>[200~ s:XTermPasteBegin("0i")
+    inoremap <special> <expr> <Esc>[200~ s:XTermPasteBegin("")
     cnoremap <special> <Esc>[200~ <nop>
     cnoremap <special> <Esc>[201~ <nop>
 endif
 """ }}}
 
+""""""""""""""""""""""""""""""""""""""""""""""""
+" FileType定義
+""""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
+autocmd BufRead,BufNewFile *.py setfiletype python
+""" }}}
 """""""""""""""""""""""""""""""""""""""""""""""""
 " NeoBundle開始
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -347,7 +351,9 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
 " Required:
 call neobundle#begin(expand('~/.vim/bundle'))
@@ -356,6 +362,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" プラグイン {{{
 " Add or remove your Bundles here:
 if has('lua') && (( v:version == 703 && has('patch885')) || (v:version >= 704))
     NeoBundle 'Shougo/neocomplete'
@@ -368,7 +375,10 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-"NeoBundle 'flazz/vim-colorschemes'
+
+NeoBundleLazy 'vim-scripts/python_fold' , {
+\    "autoload" : {"filetypes" : ["python"]}
+\}
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
