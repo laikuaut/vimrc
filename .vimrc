@@ -313,33 +313,33 @@ endfunction "}}}
 call g:auto_vimrc_auto_relativenumber()
 """ }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" 貼り付け時、自動でインデント無効化(pasteモード)
-" 参考 : http://qiita.com/ryoff/items/ad34584e41425362453e
-"""""""""""""""""""""""""""""""""""""""""""""""""
-""" {{{
-if &term =~ "xterm"
-    let &t_ti .= "\e[?2004h"
-    let &t_te .= "\e[?2004l"
-    let &pastetoggle = "\e[201~"
-
-    function! s:XTermPasteBegin(ret)
-        set paste
-        return a:ret
-    endfunction
-
-    noremap <special> <expr> <Esc>[200~ s:XTermPasteBegin("0i")
-    inoremap <special> <expr> <Esc>[200~ s:XTermPasteBegin("")
-    cnoremap <special> <Esc>[200~ <nop>
-    cnoremap <special> <Esc>[201~ <nop>
-endif
-""" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"" 貼り付け時、自動でインデント無効化(pasteモード)
+"" 参考 : http://qiita.com/ryoff/items/ad34584e41425362453e
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" {{{
+"if &term =~ "xterm"
+"    let &t_ti .= "\e[?2004h"
+"    let &t_te .= "\e[?2004l"
+"    let &pastetoggle = "\e[201~"
+"
+"    function! s:XTermPasteBegin(ret)
+"        set paste
+"        return a:ret
+"    endfunction
+"
+"    noremap <special> <expr> <Esc>[200~ s:XTermPasteBegin("0i")
+"    inoremap <special> <expr> <Esc>[200~ s:XTermPasteBegin("")
+"    cnoremap <special> <Esc>[200~ <nop>
+"    cnoremap <special> <Esc>[201~ <nop>
+"endif
+"""" }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " FileType定義
 """"""""""""""""""""""""""""""""""""""""""""""""
 """ {{{
-autocmd BufRead,BufNewFile *.py setfiletype python
+"autocmd BufRead,BufNewFile *.py setfiletype python
 """ }}}
 """""""""""""""""""""""""""""""""""""""""""""""""
 " NeoBundle開始
