@@ -160,6 +160,8 @@ set formatoptions+=Mm
 " zr 全開き
 " zm 全閉じ
 set foldmethod=marker
+" 折り畳み階層指定
+set foldlevel=1
 """ }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
