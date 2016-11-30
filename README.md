@@ -151,5 +151,16 @@ make install
 
 #### vim-scripts/python_fold
 
+pythonコードの折り畳みプラグイン
+pythonファイルの場合だけ処理してほしいため、以下で記述
 
+```Vim
+NeoBundleLazy 'vim-scripts/python_fold' , {
+\    "autoload" : {"filetypes" : ["python"]}
+\}
+```
+
+ただし、これでは初回しか適用されない(中身がsetlocalになっているためグローバル設定にはならない)。
+autocmdを使って、pythonファイルが開いたときにのみ適用されるように修正する。
+コードの詳細は、.vimrc_neoの「vim-scripts/python_fold設定」を参照
 
