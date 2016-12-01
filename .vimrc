@@ -144,7 +144,7 @@ set bs=indent,eol,start
 " コマンド補完を強化
 set wildmenu
 " リスト表示，最長マッチ
-set wildmode=list:full
+set wildmode=list:longest
 """ }}}
 
 """""""""""""""""""""""""""""
