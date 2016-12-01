@@ -22,7 +22,18 @@ set history=50 " keep 50 lines of command line history
 " カラースキーマを設定
 """""""""""""""""""""""""""""""""""""""""""""""""
 """ {{{
+""" 全角スペースの可視化 {{{
+" 参考 : http://qiita.com/kojionilk/items/67379e68cf54d811081a
+augroup highlightIdegraphicSpace
+  autocmd!
+  autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END " }}}
+
+" シンタックスのカラー表示をON
 syntax on
+
+""" デフォルトで使用可能なカラースキーム {{{
 "colorscheme delek
 "colorscheme koehler
 "colorscheme peachpuff
@@ -40,6 +51,7 @@ colorscheme desert
 "colorscheme evening
 "colorscheme pablo
 "colorscheme slate
+""" }}}
 """ }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""
