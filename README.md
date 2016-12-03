@@ -117,16 +117,25 @@ make install
 #### Shougo/neocomplcache.vim
 
 入力補完機能を提供する Vim のプラグイン。  
-これを利用するにはluaを有効化する必要がある。  
-luaの有効か方法は、[luaを有効化](https://github.com/laikuaut/vimrc#lua%E3%82%92%E6%9C%89%E5%8A%B9%E5%8C%96)を参照  
 
 #### Shougo/neocomplete.vim
 
+入力補完機能を提供する Vim のプラグイン。  
+これを利用するにはluaを有効化する必要がある。  
+luaの有効か方法は、[luaを有効化](https://github.com/laikuaut/vimrc#lua%E3%82%92%E6%9C%89%E5%8A%B9%E5%8C%96)を参照  
+
 #### Shougo/neosnippet.vim
+
+Vimでスニペット機能が使えるようになるプラグイン。  
+入力補完である、「Shougo/neocomplcache.vim」もしくは、「Shougo/neocomplete.vim」と合わせて使うと使いやすい。  
 
 #### Shougo/neosnippet-snippets
 
+拡張子毎に基本的なスニペットは利用するための導入プラグイン。  
+
 #### tpope/vim-fugitive
+
+vim用のgitラッパープラグイン。  
 
 早見表(参考 : [http://blog.yuku-t.com/entry/20110427/1303868482](http://blog.yuku-t.com/entry/20110427/1303868482))  
 これらのコマンドは全てgitリポジトリ内でのみ操作可能。  
@@ -150,9 +159,18 @@ luaの有効か方法は、[luaを有効化](https://github.com/laikuaut/vimrc#l
 
 #### ctrlpvim/ctrlp.vim
 
+ファイルの検索やバッファの検索などの機能などを提供するプラグイン。  
+
 #### Shougo/unite.vim
 
+vim 用の統合ユーザインターフェースを提供するプラグイン。  
+
 #### Shougo/neomru.vim
+
+unite.vimでfile_mruを使うためのプラグイン。  
+
+[補足]  
+* mru(Most Recently Used) : 開いたファイルの履歴を管理して、最近開いたファイルに簡単にアクセスできるようにする
 
 #### vim-scripts/python_fold
 
