@@ -116,9 +116,9 @@ make install
 
 #### Shougo/neocomplcache.vim
 
-入力補完機能を提供する Vim のプラグイン。
-これを利用するにはluaを有効化する必要がある。
-luaの有効か方法は、[luaを有効化](https://github.com/laikuaut/vimrc#lua%E3%82%92%E6%9C%89%E5%8A%B9%E5%8C%96)を参照
+入力補完機能を提供する Vim のプラグイン。  
+これを利用するにはluaを有効化する必要がある。  
+luaの有効か方法は、[luaを有効化](https://github.com/laikuaut/vimrc#lua%E3%82%92%E6%9C%89%E5%8A%B9%E5%8C%96)を参照  
 
 #### Shougo/neocomplete.vim
 
@@ -128,8 +128,8 @@ luaの有効か方法は、[luaを有効化](https://github.com/laikuaut/vimrc#l
 
 #### tpope/vim-fugitive
 
-早見表(参考 : [http://blog.yuku-t.com/entry/20110427/1303868482](http://blog.yuku-t.com/entry/20110427/1303868482))
-これらのコマンドは全てgitリポジトリ内でのみ操作可能。
+早見表(参考 : [http://blog.yuku-t.com/entry/20110427/1303868482](http://blog.yuku-t.com/entry/20110427/1303868482))  
+これらのコマンドは全てgitリポジトリ内でのみ操作可能。  
 
 * Gstatus
     + 新しい窓を作ってgit statusを表示
@@ -156,8 +156,8 @@ luaの有効か方法は、[luaを有効化](https://github.com/laikuaut/vimrc#l
 
 #### vim-scripts/python_fold
 
-pythonコードの折り畳みプラグイン
-pythonファイルの場合だけ処理してほしいため、以下で記述
+pythonコードの折り畳みプラグイン  
+pythonファイルの場合だけ処理してほしいため、以下で記述  
 
 ```Vim
 NeoBundleLazy 'vim-scripts/python_fold' , {
@@ -165,7 +165,7 @@ NeoBundleLazy 'vim-scripts/python_fold' , {
 \}
 ```
 
-ただし、これでは初回しか適用されない(中身がsetlocalになっているためグローバル設定にはならない)。
-autocmdを使って、pythonファイルが開いたときにのみ適用されるように修正する。
-コードの詳細は、.vimrc_neoの「vim-scripts/python_fold設定」を参照
+ただし、これでは初回しか適用されない(中身がsetlocalになっているためグローバル設定にはならない)。  
+autocmdを使って、pythonファイルが開いたときにのみ適用されるように修正する。  
+コードの詳細は、.vimrc_neoの「vim-scripts/python_fold設定」を参照  
 
