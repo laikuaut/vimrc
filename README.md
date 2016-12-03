@@ -160,6 +160,52 @@ vim用のgitラッパープラグイン。
 #### ctrlpvim/ctrlp.vim
 
 ファイルの検索やバッファの検索などの機能などを提供するプラグイン。  
+(参考 : [http://qiita.com/oahiroaki/items/d71337fb9d28303a54a8](http://qiita.com/oahiroaki/items/d71337fb9d28303a54a8)
+
+##### CtrlP起動、終了
+
+* Ctrl+p
+    + CtrlP起動
+* Ctrl+c, ESC
+    + CtrlP終了
+
+##### CtrlPモード切替
+
+* Ctrl+d
+    + フルパス検索モード(path)とファイル名のみの検索モード(file)を切り替え
+* Ctrl+r
+    + 正規表現検索モードと通常の検索モードを切り替え
+* Ctrl+f, Ctrl+b
+    + 検索対象を切り替え
+        - files : カレントディレクトのファイル一覧
+        - buffers : 開いているバッファー一覧
+        - mru_files : 開いた履歴からファイル一覧
+
+##### コマンドライン操作
+
+* Ctrl+j
+    + 下を選択
+* Ctrl+k
+    + 上を選択
+* Ctrl+a
+    + カーソルを先頭に
+* Ctrl+e
+    + カーソルを最後尾に
+* Ctrl+u
+    + コマンドラインをクリア
+* Ctrl+n,Ctrl+p
+    + コマンド入力履歴を辿る
+
+##### ファイル操作
+
+* CR(Enter)
+    + 現在のウインドウで開く
+* Ctrl+t
+    + 新しいタブで開く
+* Ctrl+v
+    + 垂直分割して開く
+* Ctrl+s,Ctrl+CR
+    + 水平分割して開く
 
 #### Shougo/unite.vim
 
