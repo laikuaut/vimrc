@@ -545,3 +545,11 @@ endfunction "}}}
 " 呼び出し
 call g:vimrc_python_fold()
 """ }}}
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlpvim/ctrlp.vim設定
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
+let g:ctrlp_map = '<Nop>'
+nnoremap <C-p> :<C-u>CtrlPMRUFiles<CR>
+""" }}}

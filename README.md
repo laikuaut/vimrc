@@ -162,6 +162,12 @@ vim用のgitラッパープラグイン。
 ファイルの検索やバッファの検索などの機能などを提供するプラグイン。  
 (参考 : [http://qiita.com/oahiroaki/items/d71337fb9d28303a54a8](http://qiita.com/oahiroaki/items/d71337fb9d28303a54a8)
 
+MRUを一番使うため、Ctrl+Pに設定する。
+```Vim
+let g:ctrlp_map = '<Nop>'
+nnoremap <C-p> :<C-u>CtrlPMRUFiles<CR>
+```
+
 ##### CtrlP起動、終了
 
 * Ctrl+p
