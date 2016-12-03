@@ -116,6 +116,10 @@ make install
 
 #### Shougo/neocomplcache.vim
 
+入力補完機能を提供する Vim のプラグイン。
+これを利用するにはluaを有効化する必要がある。
+luaの有効か方法は、[luaを有効化](https://github.com/laikuaut/vimrc#lua%E3%82%92%E6%9C%89%E5%8A%B9%E5%8C%96)を参照
+
 #### Shougo/neocomplete.vim
 
 #### Shougo/neosnippet.vim
@@ -124,7 +128,8 @@ make install
 
 #### tpope/vim-fugitive
 
-これらのコマンドは全てgitリポジトリ内でのみ操作可能だ。
+早見表(参考 : [http://blog.yuku-t.com/entry/20110427/1303868482](http://blog.yuku-t.com/entry/20110427/1303868482))
+これらのコマンドは全てgitリポジトリ内でのみ操作可能。
 
 * Gstatus
     + 新しい窓を作ってgit statusを表示
