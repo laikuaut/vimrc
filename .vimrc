@@ -185,6 +185,7 @@ set foldlevel=1
 "nmap j <Left>
 "nmap k <Down>
 "nmap l <Right>
+nmap scb <C-w><Left>gg:set scrollbind<CR>:set nowrap<CR><C-w><Right>gg:set scrollbind<CR>:set nowrap<CR><C-w><Left>
 """ }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
