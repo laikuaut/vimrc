@@ -26,9 +26,46 @@ set history=50 " keep 50 lines of command line history
 " 参考 : http://qiita.com/kojionilk/items/67379e68cf54d811081a
 augroup highlightIdegraphicSpace
   autocmd!
-  autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+  autocmd Colorscheme * highlight link IdeographicSpace Todo
+  autocmd VimEnter,WinEnter * call matchadd("IdeographicSpace", '　')
 augroup END " }}}
+
+""" MarkDownの簡易ハイライト設定 " {{{
+function! g:auto_vimrc_simple_markdown_hightlight() " {{{
+  augroup highlightSimpleMarkdown
+    autocmd!
+    " シンタックス範囲定義
+    autocmd VimEnter,WinEnter *.md syn sync minlines=500 maxlines=1000
+    " コードブロック
+    autocmd VimEnter,WinEnter *.md syn match mdCodeDelimiter "^```.*" contained
+    autocmd VimEnter,WinEnter *.md syn region mdCode start="^\s*```.*" end="^\s*```" keepend contains=mdCodeDelimiter
+    " 見出し
+    autocmd VimEnter,WinEnter *.md syn match mdH "^#\+.\+$"
+    " リスト
+    autocmd VimEnter,WinEnter *.md syn match mdList "^ *[\-\+\*] "
+    " 順序付きリスト
+    autocmd VimEnter,WinEnter *.md syn match mdNumList "^ *\([0-9]\+\.\)\+ "
+    " リンク
+    autocmd VimEnter,WinEnter *.md syn match mdLinkDelimiter "[()\[\]]" contained
+    autocmd VimEnter,WinEnter *.md syn region mdId start="\[\(?=.+?\](\)" end="\]" keepend nextgroup=mdLink skipwhite contains=mdLinkDelimiter
+    autocmd VimEnter,WinEnter *.md syn region mdLink start="(" end=")" keepend contained contains=mdLinkDelimiter
+    " 引用
+    autocmd VimEnter,WinEnter *.md syn match mdBlockQuote "^> .\+$"
+    " カラースキーマ定義
+    autocmd Colorscheme * highlight link mdH Title
+    autocmd Colorscheme * highlight link mdCodeDelimiter Special
+    autocmd Colorscheme * highlight link mdList CursorLineNr
+    autocmd Colorscheme * highlight link mdNumList CursorLineNr
+    autocmd Colorscheme * highlight link mdCode Comment
+    autocmd Colorscheme * highlight link mdBlockQuote Constant
+    autocmd Colorscheme * highlight link mdLink Underlined
+    autocmd Colorscheme * highlight link mdId Type
+    autocmd Colorscheme * highlight link mdLinkDelimiter cleaned
+  augroup END
+endfunction " }}}
+" 呼び出し
+call g:auto_vimrc_simple_markdown_hightlight()
+" }}}
 
 " シンタックスのカラー表示をON
 syntax on
@@ -261,7 +298,7 @@ function! g:auto_vimrc_auto_cursorline() " {{{
     augroup vimrc-auto-cursorline
         autocmd!
         autocmd InsertLeave,CursorMovedI * call s:auto_cursorline('off')
-        autocmd InsertEnter,VimEnter,CursorHold,CursorHoldI * call s:auto_cursorline('on')
+        autocmd InsertEnter,VimEnter,WinEnter,CursorHold,CursorHoldI * call s:auto_cursorline('on')
     augroup END
 endfunction " }}}
 " カーソルラインのグループをOFFにする
@@ -325,7 +362,7 @@ function! s:toggleNumberOption(event) "{{{
     endif
 endfunction "}}}
 " 呼び出し
-call g:auto_vimrc_auto_relativenumber()
+"call g:auto_vimrc_auto_relativenumber()
 """ }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
