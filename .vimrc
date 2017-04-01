@@ -52,15 +52,15 @@ function! g:auto_vimrc_simple_markdown_hightlight() " {{{
     " 引用
     autocmd VimEnter,WinEnter *.md syn match mdBlockQuote "^> .\+$"
     " カラースキーマ定義
-    autocmd Colorscheme * highlight link mdH Title
-    autocmd Colorscheme * highlight link mdCodeDelimiter Special
-    autocmd Colorscheme * highlight link mdList CursorLineNr
-    autocmd Colorscheme * highlight link mdNumList CursorLineNr
-    autocmd Colorscheme * highlight link mdCode Comment
-    autocmd Colorscheme * highlight link mdBlockQuote Constant
-    autocmd Colorscheme * highlight link mdLink Underlined
-    autocmd Colorscheme * highlight link mdId Type
-    autocmd Colorscheme * highlight link mdLinkDelimiter cleaned
+    autocmd Colorscheme * highlight def link mdH Title
+    autocmd Colorscheme * highlight def link mdCodeDelimiter Special
+    autocmd Colorscheme * highlight def link mdList CursorLineNr
+    autocmd Colorscheme * highlight def link mdNumList CursorLineNr
+    autocmd Colorscheme * highlight def link mdCode Comment
+    autocmd Colorscheme * highlight def link mdBlockQuote Constant
+    autocmd Colorscheme * highlight def link mdLink Underlined
+    autocmd Colorscheme * highlight def link mdId Type
+    autocmd Colorscheme * highlight def link mdLinkDelimiter cleaned
   augroup END
 endfunction " }}}
 " 呼び出し
